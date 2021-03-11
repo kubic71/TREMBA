@@ -82,8 +82,8 @@ def compute_loss(descs, scores, label_set, threshold=0):
     if config["loss"] == "sum":
         return (sum(true_scores) - sum(other_scores)) / len(scores) * 10
     elif config["loss"] == "max":
-        # return (max(true_scores) - max(other_scores)) * 70
-        return (max(true_scores) - dic["Plant"]) * 70
+        return (max(true_scores) - max(other_scores)) * 70
+        # return (max(true_scores) - dic["Plant"]) * 70
 
 
 c = 0

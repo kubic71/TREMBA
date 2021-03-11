@@ -1,3 +1,5 @@
+Larger lr and sigma didn't was worse than faster-decaying lr and sigma
+
 ------------------------------
 Cat: 0.9655261635780334
 Felidae: 0.8962888717651367

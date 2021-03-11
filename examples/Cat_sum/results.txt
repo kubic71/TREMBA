@@ -1,3 +1,6 @@
+Untargeted attack for cat was successful and is separated from the top-1 result by ~0.03, which is not that bad
+"sum" function was used, but "max" loss worked a little bit better in my opinion
+
 ------------------------------
 Cat: 0.9655261635780334
 Felidae: 0.8962888717651367

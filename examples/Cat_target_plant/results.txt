@@ -1,3 +1,5 @@
+I ran targeted attack for plant. It was successful, but barely. It was probably also helped by the fact, that the cat has grass in the background.
+
 ------------------------------
 Cat: 0.9655261635780334
 Felidae: 0.8962888717651367

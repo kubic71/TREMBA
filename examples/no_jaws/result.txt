@@ -1,0 +1,56 @@
+From previous untargeted attack I noticed, that it was hard to get the confidence for "Jaw" down, so I tried loss function that penalized "Jaw"
+But even then the G-Vision was still able to recognize it in the image quite well.
+
+------------------------------
+Requiem shark: 0.9648491740226746
+Water: 0.9593837857246399
+Shark: 0.9479621648788452
+Lamniformes: 0.9415116906166077
+Lamnidae: 0.9273316264152527
+Carcharhiniformes: 0.8998671174049377
+Great white shark: 0.8862602710723877
+Fin: 0.8837035298347473
+Jaw: 0.8819407820701599
+Cartilaginous fish: 0.8500852584838867
+Fish: 0.849960446357727
+Marine biology: 0.8402239084243774
+Underwater: 0.765548825263977
+Electric blue: 0.7070299983024597
+Squaliformes: 0.698467493057251
+Marine mammal: 0.6717050671577454
+Sturgeon: 0.6696033477783203
+Fang: 0.6675935387611389
+Wildlife: 0.6628068685531616
+Lake sturgeon: 0.6461830735206604
+Tiger shark: 0.6226831674575806
+Fish: 0.5301021933555603
+Nurse shark: 0.5227323770523071
+------------------------------
+
+
+------------------------------
+Crocodilia: 0.9061292409896851
+Green: 0.9013259410858154
+Jaw: 0.8795697689056396
+Crocodile: 0.8733798861503601
+Organism: 0.8580322861671448
+American crocodile: 0.8545422554016113
+Alligator: 0.8219410181045532
+Art: 0.7933464050292969
+Extinction: 0.7858226895332336
+Snapshot: 0.7428471446037292
+Fang: 0.7304815649986267
+Nile crocodile: 0.7286285758018494
+Dinosaur: 0.6834454536437988
+Electric blue: 0.6607800126075745
+Marine biology: 0.6599775552749634
+Paint: 0.6233288645744324
+Visual arts: 0.6084165573120117
+Fin: 0.6005708575248718
+Saltwater crocodile: 0.5926066637039185
+Fish: 0.5556724071502686
+Water: 0.5479570627212524
+Terrestrial animal: 0.5384665131568909
+Wildlife: 0.5219972133636475
+------------------------------
+

@@ -1,3 +1,6 @@
+"max" loss performed better compared to "sum" on cat (it was the opposite in the shark case)
+Cat ended up at 4th position with "Hair"  ~0.05 points ahead
+
 ------------------------------
 Cat: 0.9655261635780334
 Felidae: 0.8962888717651367
