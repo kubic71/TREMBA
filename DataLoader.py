@@ -35,3 +35,26 @@ def imagenet(state):
     nlabels = 1000
 
     return train_loader, test_loader, nlabels, mean, std
+
+
+def gvision(state):
+
+    mean = np.array([0.485, 0.456, 0.406])
+    std = np.array([0.229, 0.224, 0.225])
+
+    transform = transforms.Compose(
+        [transforms.Resize(256),
+         transforms.CenterCrop(224),
+         transforms.ToTensor()])
+
+
+    test_loader = torch.utils.data.DataLoader(
+        dset.ImageFolder(state['data_path'], transform=transform),
+        batch_size=1, shuffle=False,
+        num_workers=1, pin_memory=True)
+
+    nlabels = 1
+    labels = ["Cat"]
+
+
+    return test_loader, nlabels, labels, mean, std

@@ -1,0 +1,30 @@
+{
+  "batch_size": 1,
+  "train_path": "./dataset/Cat",
+  "data_path": "./dataset/Cat",
+  "epsilon": 0.05,
+  "margin": 5.0,
+  "target": false,
+  "generator_name": "Imagenet_VGG16_Resnet18_Squeezenet_Googlenet_untarget",
+
+  "loss":"sum",
+  
+  "print_log": true,
+  "log_interval": 1,
+  
+  "sample_size": 20,
+  "num_iters": 60,
+  "sigma": 5,
+  "sigma_decay": 1.1,
+  "sigma_min": 0.3,
+
+  "lr": 5,  
+  "lr_min": 0.3,
+  "lr_decay": 1.1,
+  "momentum": 0.5,
+  "plateau_length": 20,
+  "plateau_overhead": 0.3,
+    
+  "save_path": "output",
+  "save_prefix": "TREMBA_Untarget"
+}

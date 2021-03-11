@@ -1,0 +1,30 @@
+{
+  "batch_size": 1,
+  "train_path": "./dataset/shark",
+  "data_path": "./dataset/shark",
+  "epsilon": 0.05,
+  "margin": 5.0,
+  "target": false,
+  "generator_name": "Imagenet_VGG16_Resnet18_Squeezenet_Googlenet_untarget",
+
+  "loss":"max",
+  
+  "print_log": true,
+  "log_interval": 1,
+  
+  "sample_size": 20,
+  "num_iters": 60,
+  "sigma": 1,
+  "sigma_decay": 1,
+  "sigma_min": 1,
+
+  "lr": 30,  
+  "lr_min": 0.3,
+  "lr_decay": 1.05,
+  "momentum": 0.8,
+  "plateau_length": 20,
+  "plateau_overhead": 0.3,
+    
+  "save_path": "output",
+  "save_prefix": "TREMBA_Untarget"
+}

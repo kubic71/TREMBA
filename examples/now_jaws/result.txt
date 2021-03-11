@@ -1,0 +1,40 @@
+tensor(0.6009)
+++++++++++++++++++++++++++++++
+iter: 23
+++++++++++++++++++++++++++++++
+L2 difference between 2 last tries: 1.0688963382764936
+Gvision request: 484
+
+
+------------------------------
+Crocodilia: 0.9061292409896851
+Green: 0.9013259410858154
+Jaw: 0.8795697689056396
+Crocodile: 0.8733798861503601
+Organism: 0.8580322861671448
+American crocodile: 0.8545422554016113
+Alligator: 0.8219410181045532
+Art: 0.7933464050292969
+Extinction: 0.7858226895332336
+Snapshot: 0.7428471446037292
+Fang: 0.7304815649986267
+Nile crocodile: 0.7286285758018494
+Dinosaur: 0.6834454536437988
+Electric blue: 0.6607800126075745
+Marine biology: 0.6599775552749634
+Paint: 0.6233288645744324
+Visual arts: 0.6084165573120117
+Fin: 0.6005708575248718
+Saltwater crocodile: 0.5926066637039185
+Fish: 0.5556724071502686
+Water: 0.5479570627212524
+Terrestrial animal: 0.5384665131568909
+Wildlife: 0.5219972133636475
+------------------------------
+
+
+loss: 87.95697689056396, l2_deviation 17.919546127319336
+lr: 9.767139173903473
+sigma: 1.0
+img saved at  output/shark24.png
+Press enter to continue
