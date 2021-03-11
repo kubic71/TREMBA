@@ -1,4 +1,4 @@
-# Google Vision API fork
+## Google Vision attacks
 This fork tries to replicate the attack on Google Vision API from the paper, but for which the source code wasn't published.
 
 ### **Examples of successful untargeted attack**
