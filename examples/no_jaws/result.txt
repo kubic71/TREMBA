@@ -1,5 +1,5 @@
 From previous untargeted attack I noticed, that it was hard to get the confidence for "Jaw" down, so I tried loss function that penalized "Jaw"
-But even then the G-Vision was still able to recognize it in the image quite well.
+But even then the G-Vision was still able to recognize it in the image quite well. That's probably because the jaws and teeth are really big and clear.
 
 ------------------------------
 Requiem shark: 0.9648491740226746
