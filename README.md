@@ -1,3 +1,11 @@
+# Google Vision API fork
+This fork tries to replicate the attack on Google Vision API from the paper, but for which the source code wasn't published.
+
+### **Examples of successful untargeted attack**
+![](examples/shark_sum/comparison.png)
+![](examples/Cat_max/comparison.png)
+
+
 # Black-Box Adversarial Attack with Transferable Model-based Embedding
 
 This repository contains the code for reproducing the experimental results of attacking Imagenet dataset, of our submission: *Black-Box Adversarial Attack with Transferable Model-based Embedding*. 
