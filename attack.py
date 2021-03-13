@@ -3,8 +3,11 @@ import torchvision.models as models
 import os
 import json
 import DataLoader
-from utils import *
-from FCN import *
+import torch
+import torch.nn as nn
+import numpy as np
+from utils import Function, MarginLoss_Single
+from FCN import Imagenet_Decoder, Imagenet_Encoder
 from Normalize import Normalize, Permute
 from imagenet_model.Resnet import resnet152_denoise, resnet101_denoise
 
@@ -22,17 +25,18 @@ def EmbedBA(function, encoder, decoder, image, label, config, latent=None):
     lr = config['lr']
     for iter in range(config['num_iters']+1):
 
-        perturbation = torch.clamp(decoder(latent.unsqueeze(0)).squeeze(0)*config['epsilon'], -config['epsilon'], config['epsilon'])
+        perturbation = torch.clamp(decoder(latent.unsqueeze(0)).squeeze(0)*config['epsilon'],
+                                   -config['epsilon'], config['epsilon'])
         logit, loss = function(torch.clamp(image+perturbation, 0, 1), label)
         if config['target']:
             success = torch.argmax(logit, dim=1) == label
         else:
-            success = torch.argmax(logit, dim=1) !=label
+            success = torch.argmax(logit, dim=1) != label
         last_loss.append(loss.item())
 
         if function.current_counts > 50000:
             break
-        
+
         if bool(success.item()):
             return True, torch.clamp(image+perturbation, 0, 1)
 
@@ -45,14 +49,16 @@ def EmbedBA(function, encoder, decoder, image, label, config, latent=None):
         grad = torch.mean(losses.expand_as(noise) * noise, dim=1)
 
         if iter % config['log_interval'] == 0 and config['print_log']:
-            print("iteration: {} loss: {}, l2_deviation {}".format(iter, float(loss.item()), float(torch.norm(perturbation))))
+            print("iteration: {} loss: {}, l2_deviation {}".format(iter, float(loss.item()),
+                  float(torch.norm(perturbation))))
 
         momentum = config['momentum'] * momentum + (1-config['momentum'])*grad
 
         latent = latent - lr * momentum
 
         last_loss = last_loss[-config['plateau_length']:]
-        if (last_loss[-1] > last_loss[0]+config['plateau_overhead'] or last_loss[-1] > last_loss[0] and last_loss[-1]<0.6) and len(last_loss) == config['plateau_length']:
+        if (last_loss[-1] > last_loss[0]+config['plateau_overhead'] or last_loss[-1] > last_loss[0]
+                and last_loss[-1] < 0.6) and len(last_loss) == config['plateau_length']:
             if lr > config['lr_min']:
                 lr = max(lr / config['lr_decay'], config['lr_min'])
             last_loss = []
@@ -99,7 +105,7 @@ if 'OSP' in state:
     if 'defense' in state and state['defense']:
         source_model = nn.Sequential(
             Normalize(mean, std),
-            Permute([2,1,0]),
+            Permute([2, 1, 0]),
             s_model
         )
     else:
@@ -123,7 +129,7 @@ elif state['model_name'] == 'Adv_Denoise_Resnext101':
 if 'defense' in state and state['defense']:
     model = nn.Sequential(
         Normalize(mean, std),
-        Permute([2,1,0]),
+        Permute([2, 1, 0]),
         pretrained_model
     )
 else:
@@ -169,7 +175,7 @@ for i, (images, labels) in enumerate(dataloader):
             hinge_loss = MarginLoss_Single(state['white_box_margin'], state['target'])
             images.requires_grad = True
             latents = encoder(images)
-            for k in range(state['white_box_iters']):     
+            for k in range(state['white_box_iters']):
                 perturbations = decoder(latents)*state['epsilon']
                 logits = source_model(torch.clamp(images+perturbations, 0, 1))
                 loss = hinge_loss(logits, labels)
@@ -185,12 +191,14 @@ for i, (images, labels) in enumerate(dataloader):
 
         count_success += int(success)
         count_total += int(correct)
-        print("image: {} eval_count: {} success: {} average_count: {} success_rate: {}".format(i, F.current_counts, success, F.get_average(), float(count_success) / float(count_total)))
+        print("image: {} eval_count: {} success: {} average_count: {} success_rate: {}".format(
+              i, F.current_counts, success, F.get_average(), float(count_success) / float(count_total)))
         F.new_counter()
 
 success_rate = float(count_success) / float(count_total)
 if state['target']:
-    np.save(os.path.join(state['save_path'], '{}_class_{}.npy'.format(state['save_prefix'], state['target_class'])), np.array(F.counts))
+    np.save(os.path.join(state['save_path'], '{}_class_{}.npy'.format(
+            state['save_prefix'], state['target_class'])), np.array(F.counts))
 else:
     np.save(os.path.join(state['save_path'], '{}.npy'.format(state['save_prefix'])), np.array(F.counts))
 print("success rate {}".format(success_rate))
